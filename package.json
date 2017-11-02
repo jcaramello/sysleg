@@ -1,0 +1,15 @@
+{
+  "name": "sysleg",
+  "version": "1.0.0",
+  "description": "Busqueda de fallo relvantes de la suprema corte de justicia de la provincia de buenos aires",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jose Caramello",
+  "license": "ISC",
+  "dependencies": {
+    "osmosis": "^1.1.4",
+    "pdf-text-extract": "^1.5.0"
+  }
+}
