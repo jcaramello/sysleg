@@ -1,7 +1,7 @@
 var config = require('./config');
 var fs = require('fs');
 var path = require('path');
-var textract = require('textract');  
+var textract = require('textract');
 
 /**
  * Extract content from all files in the given directory
@@ -46,18 +46,19 @@ function extractSync(files, index) {
 
     textract.fromFileWithPath(file.path, (err, text) => {
         if (err) {
-            console.dir(err)
-            return
+            console.log("Error extracting file :: " +file.path)
+            console.dir(err)            
         }
-
-        console.log(text);
-        // var stream = fs.createWriteStream(path.join(file.output, file.name + '.txt'));
-        // stream.once('open', function (fd) {
-        //     stream.write(text);            
-        //     stream.end();
-        // });
-
-        // extractSync(files, index++);
+        
+        if(text != null && text != ''){
+            var stream = fs.createWriteStream(path.join(file.output, file.name + '.txt'));
+            stream.once('open', function (fd) {
+                stream.write(text);            
+                stream.end();
+            });
+        }
+        
+        extractSync(files, ++index);
     });
 
 
