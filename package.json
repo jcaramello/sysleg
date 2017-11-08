@@ -9,6 +9,7 @@
   "author": "Jose Caramello",
   "license": "ISC",
   "dependencies": {
+    "commander": "^2.11.0",
     "osmosis": "^1.1.4",
     "textract": "^2.2.0"
   }

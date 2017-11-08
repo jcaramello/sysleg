@@ -1,4 +1,3 @@
-var config = require('./config');
 var fs = require('fs');
 var path = require('path');
 var textract = require('textract');
@@ -8,7 +7,7 @@ var textract = require('textract');
  */
 function fromDir(sourceDir, outputDir, types) {
 
-    if (!sourceDir) return;
+    if (!sourceDir) return;    
 
     types = types || ['pdf'];
 
@@ -28,7 +27,8 @@ function fromDir(sourceDir, outputDir, types) {
         }).filter(f => types.indexOf(f.ext.replace('.', '')) > -1);
 
         // we need to extrac one by one, to avoid freeze the thread and the whole machine
-        extractSync(files, 0);
+        if(files.length > 0)
+            extractSync(files, 0);
     });
 }
 
