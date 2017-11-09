@@ -9,7 +9,7 @@ function fromDir(sourceDir, outputDir, types) {
 
     if (!sourceDir) return;    
 
-    types = types || ['pdf'];
+    types = types || ['pdf', 'doc'];
 
     fs.readdir(sourceDir, (err, files) => {
 
@@ -24,7 +24,7 @@ function fromDir(sourceDir, outputDir, types) {
             data.path = path.join(sourceDir, f);
             data.output = outputDir || data.dir;
             return data;
-        }).filter(f => types.indexOf(f.ext.replace('.', '')) > -1);
+        }).filter(f => types.indexOf(f.ext.toLowerCase().replace('.', '')) > -1);
 
         // we need to extrac one by one, to avoid freeze the thread and the whole machine
         if(files.length > 0)
@@ -39,7 +39,7 @@ function fromDir(sourceDir, outputDir, types) {
  */
 function extractSync(files, index) {
 
-    if (files.length == index + 1) return;
+    if (files.length == index) return;
 
     var file = files[index];
     console.log('extracting file >> ' + file.path)

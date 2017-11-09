@@ -11,6 +11,7 @@
   "dependencies": {
     "commander": "^2.11.0",
     "osmosis": "^1.1.4",
+    "request": "^2.83.0",
     "textract": "^2.2.0"
   }
 }
